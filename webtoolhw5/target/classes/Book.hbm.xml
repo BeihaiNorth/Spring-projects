@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 2, 2017 10:32:56 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.leslie.hw5.pojo.Book" table="BOOK">
+        <id name="isbn" type="java.lang.String">
+            <column name="ISBN" />
+            <generator class="assigned" />
+        </id>
+        <property name="title" type="java.lang.String">
+            <column name="TITLE" />
+        </property>
+        <property name="authers" type="java.lang.String">
+            <column name="AUTHERS" />
+        </property>
+        <property name="price" type="float">
+            <column name="PRICE" />
+        </property>
+    </class>
+</hibernate-mapping>
