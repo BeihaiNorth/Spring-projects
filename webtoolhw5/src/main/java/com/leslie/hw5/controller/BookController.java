@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -14,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.leslie.hw5.pojo.Book;
 
+import sun.misc.BASE64Decoder;
+
 @Controller
 public class BookController extends MyController {
 	
@@ -21,9 +24,38 @@ public class BookController extends MyController {
 	/***go to book home page***/
 	/**************************/
 	@RequestMapping(value = "/book/home.htm", method = RequestMethod.GET)
-	public ModelAndView showBookHome() {
+	public ModelAndView showBookHome(HttpServletRequest request,HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("bookHome");
+		String user = "leslie";
+		String password = "1";
+		String authorization = request.getHeader("Authorization");
+		if (authorization == null) {
+			response.setStatus(401);
+			response.setHeader("WWW-Authenticate", "BASIC realm='leslie'");
+			mv.setViewName("login-error");
+			System.out.println("haha");
+			return mv;
+		} else {
+			String userInfo = authorization.substring(6).trim();
+			BASE64Decoder decoder = new BASE64Decoder();
+			try{
+				String n = new String(decoder.decodeBuffer(userInfo));
+				String[] nameAndPasswordstring = n.split(":");
+				String thisuser = nameAndPasswordstring[0];
+				String thispassword = nameAndPasswordstring[1];
+				System.out.println("u:"+thisuser);
+				System.out.println("p:"+thispassword);
+			
+				if (thisuser.equals(user) && thispassword.equals(password)) {
+					mv.setViewName("bookHome");
+				}else{
+					mv.setViewName("login-error");
+				}
+			}catch(Exception e){
+				
+			}
+			
+		}
 		return mv;
 	}
 	
@@ -51,12 +83,6 @@ public class BookController extends MyController {
 		int successnumber = totalnumber;
 		ModelAndView mv = new ModelAndView("bookAdded","totalnumber",totalnumber);
 		
-//		Session session = getSession();
-//		try{
-//			session.beginTransaction();
-//		}catch(Exception e){
-//			System.out.println("cannot begin transaction:"+e);
-//		}
 		
 		ArrayList<Book> booklist = new ArrayList<Book>();
 		for(int i = 1; i <= totalnumber; i++){
