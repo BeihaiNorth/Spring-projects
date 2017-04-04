@@ -12,7 +12,7 @@
     </head>
     <body>
         <h1>Searching movies...</h1>
-        <h3> <c:out value="${requestScope.type}"/> is <c:out value="${requestScope.keyword}" /></h3>
+        <%-- <h3> <c:out value="${requestScope.type}"/> is <c:out value="${requestScope.keyword}" /></h3> --%>
         <table class="table table-striped">            
             <thead>
                 <tr>
@@ -24,7 +24,7 @@
                 </tr>                
             </thead>
             <tbody>
-            <c:forEach items="${requestScope.movieList}" var="movie">
+            <c:forEach items="${movieList}" var="movie">
                 <tr>
                     <td>${movie.title}</td>
                     <td>${movie.actor}</td>
@@ -35,6 +35,9 @@
             </c:forEach>
             </tbody>
            
-        </table> 
+        </table>
+        <form action="home.htm" class="col-sm-4">
+        	<button type='submit' class='btn btn-primary btn-block'>Back to Movie Home</button>
+        </form>
     </body>
 </html>

@@ -12,7 +12,7 @@
     <body>
         <h1>Search a Movie</h1>
         <div class="container">
-            <form action="result.htm" method="post">
+            <form action="result.htm" method="get">
                 <div class="row">
                     
                     <div class='form-group col-sm-4'>

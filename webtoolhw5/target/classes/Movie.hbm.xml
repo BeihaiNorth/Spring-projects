@@ -20,5 +20,25 @@
         <property name="year" type="int">
             <column name="YEAR" />
         </property>
+        <filter name = "titleFilter" condition=":titleFilterParam = title"></filter>
+        <filter name = "actorFilter" condition=":actorFilterParam = actor"></filter>
+        <filter name = "actressFilter" condition=":actressFilterParam = actress"></filter>
+        <filter name = "genreFilter" condition=":genreFilterParam = genre"></filter>
+        <filter name = "yearFilter" condition=":yearFilterParam = year"></filter>
     </class>
+    <filter-def name="titleFilter">
+　　　　	<filter-param name="titleFilterParam" type="string"/>
+　　	</filter-def>
+	<filter-def name="actorFilter">
+　　　　	<filter-param name="actorFilterParam" type="string"/>
+　　	</filter-def>
+	<filter-def name="actressFilter">
+　　　　<filter-param name="actressFilterParam" type="string"/>
+　　	</filter-def>
+	<filter-def name="genreFilter">
+　　　　<filter-param name="genreFilterParam" type="string"/>
+　　	</filter-def>
+	<filter-def name="yearFilter">
+　　　　<filter-param name="yearFilterParam" type="string"/>
+　　	</filter-def>
 </hibernate-mapping>

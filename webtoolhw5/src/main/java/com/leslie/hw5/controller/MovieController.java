@@ -26,6 +26,8 @@ public class MovieController extends MyController {
 		return mv;
 	}
 	
+	
+	
 	/**************************/
 	/***search movie by type***/
 	/**************************/
@@ -35,12 +37,33 @@ public class MovieController extends MyController {
 		mv.setViewName("movieSearch");
 		return mv;
 	}
-	@RequestMapping(value = "/movie/search.htm", method = RequestMethod.GET)
-	public ModelAndView searchMovie(){
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("movieSearchResult");
-		return mv;
+	@RequestMapping(value = "/movie/result.htm", method = RequestMethod.GET)
+	public ModelAndView searchMovie(HttpServletRequest request){
+		
+		String type = request.getParameter("searchtype");
+		String keyword = request.getParameter("keyword");
+		List<Movie> movielist = null;
+		
+		Session session = getSession();
+		
+		if(type.equals("title")){
+			session.enableFilter("titleFilter").setParameter("titleFilterParam", keyword);
+		}else if(type.equals("actor")){
+			session.enableFilter("actorFilter").setParameter("actorFilterParam", keyword);
+		}else if(type.equals("actress")){
+			session.enableFilter("actressFilter").setParameter("actressFilterParam", keyword);
+		}else if(type.equals("genre")){
+			session.enableFilter("genreFilter").setParameter("genreFilterParam", keyword);
+		}else if(type.equals("year")){
+			session.enableFilter("yearFilter").setParameter("yearFilterParam", keyword);
+		}else{
+			return new ModelAndView("movieError","movieList", movielist);
+		}
+		Query q = session.createQuery("from Movie"); // this Movie with a capital"M", means Movie class, not movie table
+		movielist = q.list();
+		return new ModelAndView("movieSearchResult","movieList", movielist);
 	}
+	
 	
 	/**************************/
 	/***go add movies to DB****/
@@ -52,6 +75,7 @@ public class MovieController extends MyController {
 		return mv;
 	}
 	
+	//movieAddNew --> movieAdded.jsp
 	@RequestMapping(value = "/movie/success.htm", method = RequestMethod.POST)
 	public ModelAndView addMovie(HttpServletRequest request){
 		Session hibernatesession = getSession();
