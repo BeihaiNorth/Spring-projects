@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,7 +13,7 @@
     <body>
         <div class="container">
             <div class="row">
-                <h1>books added successfully!</h1>
+                <h1>${successnumber} out of ${totalnumber} books added successfully!</h1>
                 <form action="addnumber.htm"  class="col-sm-3">
                     <button type='submit' class='btn btn-primary btn-block'>Add more books</button>
                 </form>

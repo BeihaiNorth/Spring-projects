@@ -29,5 +29,23 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Movie</web-resource-name>
+			<url-pattern>/movie/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>administrator</role-name>
+			<role-name>guest</role-name>
+		</auth-constraint>
+   	</security-constraint>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/WEB-INF/views/login.jsp</form-login-page>
+			<form-error-page>/login-error.html</form-error-page>
+		</form-login-config>
+   	</login-config>
 
 </web-app>

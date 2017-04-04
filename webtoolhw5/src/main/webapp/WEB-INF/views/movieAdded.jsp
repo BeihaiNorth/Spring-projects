@@ -16,7 +16,7 @@
                 <form action="add.htm" method="get" class="col-sm-3">
                     <button type='submit' class='btn btn-primary btn-block'>Add another movie</button>
                 </form>
-                <form action="home.htm" method="post" class="col-sm-3">
+                <form action="home.htm" method="get" class="col-sm-3">
                     <button type='submit' class='btn btn-primary btn-block'>Back to MOVIE home</button>
                 </form>
             </div>

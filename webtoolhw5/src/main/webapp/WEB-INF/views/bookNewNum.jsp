@@ -12,7 +12,7 @@
     <body>
         <div class="container">
             <h1>Welcome to BOOK DB!</h1>
-            <form action="addnew.htm">
+            <form action="addnew.htm" method="post">
                 <div class="row">
                     <div class="form-group col-sm-4">
                         <lable>How many books do you want to add?</lable>

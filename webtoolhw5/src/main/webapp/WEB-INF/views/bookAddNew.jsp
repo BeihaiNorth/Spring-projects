@@ -27,7 +27,7 @@
                         </tr>                
                     </thead>
                     <tbody>
-                        <c:forEach var="i" begin="1" end="${requestScope.num}" step="1">
+                        <c:forEach var="i" begin="1" end="${number}" step="1">
                             <tr>
                                 <td>
                                     <div class="form-group">
@@ -53,7 +53,7 @@
                         </c:forEach>
                     </tbody>
                 </table>
-                <input hidden name="num" type="text" value="${requestScope.num}" placeholder="${requestScope.num}">
+                <input hidden name="num" type="text" value="${number}">
                 
                 <button type='submit' class='btn btn-primary btn-block'>Submit</button>
             </form>
