@@ -15,23 +15,23 @@
                 <div class="row">
                     <div class='form-group col-sm-5'>
                         <label>Movie Title:</label>
-                        <input type='text' class='form-control' name='title'>
+                        <input type='text' class='form-control' name='title' required>
                     </div>
                     <div class='form-group col-sm-5'>
                         <label>Lead Actor:</label>
-                        <input type='text' class='form-control' name='actor'>
+                        <input type='text' class='form-control' name='actor' required>
                     </div>
                     <div class='form-group col-sm-5'>
                         <label>Lead Actress:</label>
-                        <input type='text' class='form-control' name='actress'>
+                        <input type='text' class='form-control' name='actress' required>
                     </div>
                     <div class='form-group col-sm-5'>
                         <label>Genre:</label>
-                        <input type='text' class='form-control' name='genre'>
+                        <input type='text' class='form-control' name='genre' required>
                     </div>
                     <div class='form-group col-sm-5'>
                         <label>Year:</label>
-                        <input type='number' class='form-control' name='year' step="1" min="1895" max="2017">
+                        <input type='number' class='form-control' name='year' step="1" min="1895" max="2017" />
                     </div>
                     <button type='submit' class='btn btn-primary btn-block'>Add Movie</button>
                 </div>

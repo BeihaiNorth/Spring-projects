@@ -84,16 +84,23 @@ public class MovieController extends MyController {
 		String actor = request.getParameter("actor");
 		String actress = request.getParameter("actress");
 		String genre = request.getParameter("genre");
-		String year = request.getParameter("year");
+		int year = Integer.parseInt(request.getParameter("year"));
 		Movie movie = new Movie();
+		//manually assign title, for the id generator class is "assigned".
+		movie.setTitle(title);
+		movie.setActor(actor);
+		movie.setActress(actress);
+		movie.setGenre(genre);
+		movie.setYear(year);
 		try {
 			hibernatesession.beginTransaction();
 			hibernatesession.save(movie);
 			hibernatesession.getTransaction().commit();
 			System.out.println("movie added!:" + title);
-		} catch (HibernateException e) {
+		} catch (Exception e) {
 			System.out.println("Cannot add movie! " + e);
 			hibernatesession.getTransaction().rollback();
+			return new ModelAndView("movieError", "error", e);
 		} finally {
 			hibernatesession.close();
 		}

@@ -13,10 +13,10 @@
         <div class="container">
             <div class="row">
                 <h1>movie added successfully!</h1>
-                <form action="movieAddNew" method="post" class="col-sm-3">
+                <form action="add.htm" method="get" class="col-sm-3">
                     <button type='submit' class='btn btn-primary btn-block'>Add another movie</button>
                 </form>
-                <form action="movieHome" method="post" class="col-sm-3">
+                <form action="home.htm" method="post" class="col-sm-3">
                     <button type='submit' class='btn btn-primary btn-block'>Back to MOVIE home</button>
                 </form>
             </div>
