@@ -1,0 +1,182 @@
+
+html * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*body {
+  font-family: "PT Sans", sans-serif;
+  background-color: white;
+}*/
+
+img {
+  max-width: 100%;
+}
+
+input, textarea {
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
+  font-size: 1rem;
+}
+input::-ms-clear, textarea::-ms-clear {
+  display: none;
+}
+
+
+/* main */
+ 
+
+  .jumbotron { 
+    /*background-color: #f4511e; /* Orange */
+    color: #432314;
+    padding: 320px 25px 350px 25px;
+    background-image: url("../img/indexbg2.png");
+  }
+
+  .jumbotron h1{
+      color: #b12e27;
+      font-size:60px;
+      font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+      font-weight:800;
+  }
+
+  #box{
+    background:rgba(255, 255, 255, 0.8);
+    padding:25px;
+    margin-left:-100px; 
+    margin-right:-100px;
+  }
+
+
+  .bg-grey {
+    background-color: #f9f8f7;
+  }
+  .container {
+    margin-top: -20px;
+    line-height: 1.5em;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 15px;
+    color: #6f6f6f;
+    padding:30px;
+  }
+  .container h2 {
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    padding:30px;
+    font-size: 30px;
+    color: #ff6f6f;
+
+  }
+  .whyUsIcon {
+      border: 10px solid transparent;
+      width: 80%;
+      height: 80%;
+      opacity: 0.8;
+  }
+  .whyUsIcon:hover {
+      border-color: #f1f1f1;
+  }
+  .container-fluid {
+      padding: 60px 50px;
+  }
+ 
+
+
+
+/*customer section css*/
+.customer h2{
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    padding:30px 0px;
+    font-size: 30px;
+    color: #ff6f6f;
+
+
+}
+#row1{
+  width:640px;
+  height:480px;
+}
+.carousel-inner img {
+     
+    width: 100%; /* Set width to 100% */
+    margin: auto;
+}
+
+.carousel-caption h3 {
+    color: #fff !important;
+    font-size:18px;
+    font-weight: 900;
+}
+
+@media (max-width: 600px) {
+    .carousel-caption {
+        display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+}
+
+/*contact*/
+
+
+.contact h2 {
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    padding:30px;
+    font-size: 30px;
+    color: #ff6f6f;
+
+  }
+  .contact h3{
+    font-size: 24px;
+  }
+
+  .contact p{
+    font-size: 22px;
+  }
+
+#row2{
+  margin:150px 50px 50px 50px;
+  background-color: #f9f8f7;
+  border-style: solid;
+  border-color: #c32632;
+  border-width: 5px;
+
+}
+
+
+/*.customer h2{
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    padding:30px;
+    font-size: 30px;
+    color: #af6f6f;
+    text-align: center;
+}
+
+.carousel-control.right, .carousel-control.left {
+    background-image: none;
+    color: #f4511e;
+}
+
+.carousel-indicators li {
+    border-color: #f4511e;
+}
+
+.carousel-indicators li.active {
+    background-color: #f4511e;
+}
+
+.item h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    font-weight: 400;
+    font-style: italic;
+    margin: 70px 0;
+}
+
+.item span {
+    font-style: normal;
+}*/ 
+

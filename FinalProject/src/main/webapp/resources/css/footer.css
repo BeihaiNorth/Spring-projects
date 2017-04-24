@@ -1,0 +1,39 @@
+
+ #footer {
+    background: #f9f8f7;
+    z-index: 1;
+    position: static;
+    padding: 20px;
+    color: #666
+}
+.footerLinks{
+  display: block;
+  text-align: center;
+  /*justify-content: center;*/
+}
+.footerLinksLink {
+    text-align: left;
+    color: #999;
+    padding-right: 60px;
+  }
+.footerSocialIcons{
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+.footerSocialIconsIcon{
+  color: #999;
+  max-width: 20px;
+  padding-left:10px;
+  padding-right:50px;
+}
+.icon{
+  max-width: 40px;
+}
+.footerLegal{
+  padding-bottom: 10px;
+  padding-top: 20px;
+  color: #dadada;
+  text-align: center;
+  font-size: 11px;
+}

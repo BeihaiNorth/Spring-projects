@@ -1,0 +1,75 @@
+<style> body {
+    position: relative;
+}
+
+.affix {
+    top: 20px;
+}
+
+@media screen and (max-width: 810px) {
+    #restaurant-info-text {
+        display: none;
+    }
+    #myScrollspy {
+      display: none;
+    }
+
+}
+
+
+/*scroll spy nav*/
+
+.nav-pills li a {
+    color: #881a23;
+}
+
+.nav-pills li.active a {
+    background-color: #881a23;
+}
+
+.nav-pills li.active a:hover {
+    background-color: #881a23;
+}
+
+.list-group li a {
+    color: #881a23;
+}
+
+.btn-primary span.badge {
+    color: #881a23;
+}
+
+button.btn-primary {
+    background-color: #881a23;
+}
+
+button.btn-primary a {
+    color: #881a23;
+}
+
+button.btn-primary:hover {
+    background-color: #881a23;
+}
+
+button.btn-default a {
+    color: #881a23;
+}
+
+span.label-primary {
+    background-color: white;
+    color: #881a23;
+}
+
+.btn-addtocart {
+    margin-top: 6px;
+}
+
+button.btn-addtocart:hover {
+    background-color: #881a23;
+}
+
+.label {
+    float: right;
+}
+
+</style>

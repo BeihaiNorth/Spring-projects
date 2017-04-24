@@ -1,0 +1,123 @@
+body {
+    /*background-color: #f2f2f0; light gray #f5ede8  /* light yellow**/ 
+    background-color: #fff;
+}
+
+
+/*nav car*/
+.navbar {
+    margin-bottom: 0;
+    background-color: #fdc743;
+    border: 0;
+    font-size: 17px !important;
+    font-weight: 900;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+}
+
+.navbar li a,
+.navbar .navbar-brand {
+    color: #c32632 !important;
+}
+
+.navbar-nav li a:hover,
+.navbar-nav li.active a {
+    color: #f4511e !important;
+    background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+
+
+/*restaurant heding image on order & restarant.html*/
+#theme-img-container {
+    padding: 0;
+}
+.restaurant-theme-img-sm {
+    margin-top: 0;
+    height: 150px;
+    background-image: url('../img/background.jpg');
+    background-size: cover;
+}
+.restaurant-theme-img-lg {
+    margin-top: 0;
+    height: 300px;
+    background-image: url('../img/background.jpg');
+    background-size: cover;
+    color: #fff;
+/*    -webkit-filter: brightness(50%);  Safari 6.0 - 9.0 
+    filter: brightness(50%);*/
+}
+.restaurant-theme-img-lg .restaurant-info{
+    margin-top: 0;
+}
+
+.restaurant-theme-img-lg .restaurant-info img{
+    box-shadow: 9px 9px 3px #222;
+}
+
+.restaurant-theme-img-lg .col-sm-4 {
+    padding-top: 60px;
+    padding-left: 20%;
+
+    text-align: right;
+}
+.restaurant-theme-img-lg .col-sm-8 {
+    padding-top: 60px;
+    padding-left: 40px;
+}
+.restaurant-theme-img-lg .col-sm-8 h1 {
+    margin-top: 0;
+}
+
+/*main content*/
+.wrapper {
+    margin-top: 20px;
+}
+
+/*panel*/
+.panel {
+    border: none;
+    margin-top: 15px;
+}
+.panel-default {
+    border:none;
+}
+.panel .panel-body {
+	background-color: #f9f8f7;
+	color: #54465A;
+    border:none;
+}
+.panel .panel-heading {
+    font-weight: 900;
+	font-size: 20px;
+	padding: 10px 20px;
+	letter-spacing: 2px;
+	background-color: #fff;
+	color: #881a23;
+    border: none;
+}
+
+#payment .panel-heading {
+	background-color: #fff;
+	padding: 0;
+	margin: 0;
+}
+
+
+
+
+/*Payment Information Tabs*/
+.nav-tabs li a {
+    color: #881a23;
+}
+
+
+
+.nav-tabs li.active {
+    color: #54465A;
+}
