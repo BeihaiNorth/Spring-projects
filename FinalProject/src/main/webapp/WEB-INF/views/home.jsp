@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
 
   
   <!-- bootstrap -->
@@ -44,9 +43,9 @@
 
 //search
 
-function jump(){
-	window.location.href = "restaurantList.html";
-}
+// function jump(){
+// 	window.location.href = "restaurantList.html";
+// }
 
 
 
@@ -56,8 +55,11 @@ function jump(){
 </head>
 
 <body class="main">
+
+<!-- get  contextPath for url mapping -->
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
   <header role="banner">
-    <div id="cd-logo"><a class = "main-nav-brand" href="#main"><img src="img/homelogo.png" alt="Logo"></a>
+    <div id="cd-logo"><a class = "main-nav-brand" href="#main"><img src="<c:url value='/resources/img/homelogo.png' />" alt="Logo"></a>
     </div>
 
     <nav class="main-nav">
@@ -172,11 +174,11 @@ function jump(){
 <div id="box">
 <h1>Food Delivery</h1><br> 
 <p>We specialize in BEST Food Delivery!</p> 
-  <form class="form-inline">
+  <form class="form-inline" action="search" method="get">
     <div class="input-group">
-      <input type="text" class="form-control" size="50" id="tags" placeholder="Location" required>
+      <input type="text" class="form-control" size="50" name="key" id="tags" placeholder="Zip Code" required>
         <div class="input-group-btn">
-        <button type="button" class="btn btn-danger" id="search" onclick=javascript:jump()>Search</button>
+        <button type="submit" class="btn btn-danger" id="search">Search</button>
         </div>
     </div>
   </form>
@@ -187,18 +189,18 @@ function jump(){
 <h2>Why Order with Us?</h2>
  <div class="row">
     <div class="col-sm-4">
-      <img src="img/search.png" alt="search" class="whyUsIcon" width="150" height="150">
+      <img src="<c:url value='/resources/img/search.png' />" alt="search" class="whyUsIcon" width="150" height="150">
       <p><br><strong>Find Favorites and Discover New Ones Online</strong></p>
       <p><br>Browse thousands of restaurants and stores on website or on our App to get the best of your neighborhood delivered.</p>
     </div>
     <div class="col-sm-4">
-      <img src="img/orderonline.png" alt="orderonline" class="whyUsIcon" width="150" height="150">
+      <img src="<c:url value='/resources/img/orderonline.png' />" alt="orderonline" class="whyUsIcon" width="150" height="150">
       <p><br><strong>Free, Easy, and Essential to Order</strong></p>
       <p><br>It's free to order, so save time tackling your to-do list at home, at work, or on the go.</p>
     </div>
 
     <div class="col-sm-4">
-       <img src="img/delivery.png" alt="delivery" class="whyUsIcon" width="150" height="150">
+       <img src="<c:url value='/resources/img/delivery.png' />" alt="delivery" class="whyUsIcon" width="150" height="150">
        <p><br><strong>Fast Delivery Ganranteed</strong></p>
        <p><br>We promise to delivery your food as soon as possible. If there is a delay, we offer you twice refund.</p>    
     </div>
@@ -220,7 +222,7 @@ function jump(){
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="img/customer1.jpg" alt="1">
+      <img src="<c:url value='/resources/img/customer1.jpg' />" alt="1">
       <div class="carousel-caption">
         <h3>"This food delivery company is the best. I am so happy with the food!"<br>
         <span style="font-style:normal;">-- Kobe Bryant, Basketball Player</span></h3>
@@ -228,7 +230,7 @@ function jump(){
     </div>
 
     <div class="item">
-      <img src="img/customer2.jpg" alt="2">
+      <img src="<c:url value='/resources/img/customer2.jpg' />" alt="2">
       <div class="carousel-caption">
          <h3>"My favorite is Chicken Tender Sandwich in POPEYES!"<br><span style="font-style:normal;">-- Justin Bieber, Student in NEU</span></h3>
 
@@ -236,7 +238,7 @@ function jump(){
     </div>
 
     <div class="item">
-      <img src="img/customer3.jpg" alt="3">
+      <img src="<c:url value='/resources/img/customer3.jpg' />" alt="3">
       <div class="carousel-caption">
         <h3>"Could I... BE any more happy with this company?"<br><span style="font-style:normal;">-- Bree Van de Kamp, Housewife</span></h3>
 
@@ -310,16 +312,16 @@ function jump(){
             </div>
             <div class = "footerSocialIcons">
                 <a class="footerSocialIconsIcon" href="https://twitter.com/" target="_blank">
-                    <img class="icon" src="img/twitter.svg" alt="twitter">
+                    <img class="icon" src="<c:url value='/resources/img/twitter.svg' />" alt="twitter">
                 </a>
                 <a class="footerSocialIconsIcon" href="https://facebook.com/" target="_blank">
-                    <img class="icon" src="img/facebook.svg" alt="facebook">
+                    <img class="icon" src="<c:url value='/resources/img/facebook.svg' />" alt="facebook">
                 </a>
                 <a class="footerSocialIconsIcon" href="https://instagram.com/" target="_blank">
-                    <img class="icon" src="img/instagram.svg" alt="instagram">
+                    <img class="icon" src="<c:url value='/resources/img/instagram.svg'/>" alt="instagram">
                 </a>
                 <a class="footerSocialIconsIcon" href="https://google.com/" target="_blank">
-                    <img class="icon" src="img/google.svg" alt="google">
+                    <img class="icon" src="<c:url value='/resources/img/google.svg'/>" alt="google">
                 </a>
             </div>
         <div class="footerLegal">

@@ -14,15 +14,17 @@ public class Food{
 	
 	@Id
 	@GeneratedValue(generator = "foodGenerator")
-	@GenericGenerator(name = "foodGenerator", strategy = "foreign", 
-			parameters = @Parameter(name = "property", value = "restaurant"))
+	@Column(name="id")
 	private long id;
 	
 	@Column(name="name")
 	private String name;
 	
 	@Column(name="price")
-	private Float price; 
+	private Float price;
+	
+	@Column(name="type")
+	private String type;
 	
 	public void setName(String name){
 		this.name = name;

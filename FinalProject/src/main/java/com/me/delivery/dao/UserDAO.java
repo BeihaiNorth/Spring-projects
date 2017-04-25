@@ -5,17 +5,16 @@ import org.hibernate.Query;
 import org.hibernate.Criteria;
 import org.springframework.stereotype.Repository;
 
-import com.me.delivery.exception.RestaurantException;
+import com.me.delivery.exception.UserException;
 import com.me.delivery.pojo.Email;
 import com.me.delivery.pojo.User;
 
-@Repository
 public class UserDAO extends DAO {
 
 	public UserDAO() {
 	}
 
-	public User get(String email, String password) throws RestaurantException {
+	public User get(String email, String password) throws UserException {
 		try {
 			begin();
 			Query q = getSession().createQuery("from User where username = :username and password = :password");
@@ -26,11 +25,11 @@ public class UserDAO extends DAO {
 			return user;
 		} catch (HibernateException e) {
 			rollback();
-			throw new RestaurantException("Could not get user " + email, e);
+			throw new UserException("Could not get user " + email, e);
 		}
 	}
 	
-	public User get(int userId) throws RestaurantException {
+	public User get(int userId) throws UserException {
 		try {
 			begin();
 			Query q = getSession().createQuery("from User where personID= :personID");
@@ -40,12 +39,12 @@ public class UserDAO extends DAO {
 			return user;
 		} catch (HibernateException e) {
 			rollback();
-			throw new RestaurantException("Could not get user " + userId, e);
+			throw new UserException("Could not get user " + userId, e);
 		}
 	}
 
 	public User register(User u)
-			throws RestaurantException {
+			throws UserException {
 		try {
 			begin();
 			System.out.println("inside DAO");
@@ -63,18 +62,18 @@ public class UserDAO extends DAO {
 
 		} catch (HibernateException e) {
 			rollback();
-			throw new RestaurantException("Exception while creating user: " + e.getMessage());
+			throw new UserException("Exception while creating user: " + e.getMessage());
 		}
 	}
 
-	public void delete(User user) throws RestaurantException {
+	public void delete(User user) throws UserException {
 		try {
 			begin();
 			getSession().delete(user);
 			commit();
 		} catch (HibernateException e) {
 			rollback();
-			throw new RestaurantException("Could not delete user " + user.getUsername(), e);
+			throw new UserException("Could not delete user " + user.getUsername(), e);
 		}
 	}
 }

@@ -38,10 +38,14 @@ public class Restaurant {
 	@Column(name="hours")
 	private String hours;
 	
+	@Column(name="type")
+	private String type;
+	
 	@OneToMany
+	@JoinColumn(name="Restaurantid") //Uni-directive. This column is added to 'food' table
 	private Set<Food> foods;
 	
-	public Restaurant(String name, String street, String zipcode, String lattitude, String longtitude, String tel, String hours){
+	public Restaurant(String name, String street, String zipcode, String lattitude, String longtitude, String tel, String hours, String type){
 		this.name = name;
 		this.street = street;
 		this.zipcode = zipcode;
@@ -49,11 +53,13 @@ public class Restaurant {
 		this.longtitude = longtitude;
 		this.tel = tel;
 		this.hours = hours;
+		this.type = type;
 	}
 	
 	public Restaurant(){
 		
 	}
+	
 	
 	public long getRestaurantId() {
         return restaurantId;
@@ -125,6 +131,14 @@ public class Restaurant {
 
     public void setHours(String hours) {
         this.hours = hours;
+    }
+    
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 	
 	public void setFoods(Set<Food> foods){

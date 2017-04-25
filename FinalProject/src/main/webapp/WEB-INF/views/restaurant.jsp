@@ -11,13 +11,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="CSS/restaurant.css">
-    <link rel="stylesheet" href="CSS/footer.css">
-    <link rel="stylesheet" type="text/css" href="CSS/main.css">
+    <link rel="stylesheet" href="<c:url value='/resources/css/restaurant.css'/>">
+    <link rel="stylesheet" href="<c:url value='/resources/css/footer.css'/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/main.css'/>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src=" https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js "></script>
-    <script src="JS/restaurant.js"></script>
+    <script src="<c:url value='/resources/js/restaurant.js'/>"></script>
     <!-- Add Google Maps -->
     <script src="http://maps.googleapis.com/maps/api/js"></script>
     <script>
@@ -53,14 +53,14 @@
     .restaurant-theme-img-sm {
         margin-top: 0;
         height: 150px;
-        background-image: url('img/background.jpg');
+        background-image: url("<c:url value='/resources/img/background.jpg'/>");
         background-size: cover;
     }
     
     .restaurant-theme-img-lg {
         margin-top: 0;
         height: 300px;
-        background-image: url('img/background.jpg');
+        background-image: url("<c:url value='/resources/img/background.jpg'/>");
         background-size: cover;
         color: #fff;
     }
@@ -91,7 +91,7 @@
         <div class="restaurant-theme-img-lg">
             <div class="restaurant-info row">
                 <div class="col-xs-1 col-sm-4">
-                    <img src="img/logo.jpg" width="130">
+                    <img src="<c:url value='/resources/img/logo.jpg'/>" width="130">
                 </div>
                 <div class="col-xs-11 col-sm-8">
                     <h1>POPEYES</h1>
@@ -128,17 +128,19 @@
                             <p>Open time: 10 am - 23 pm</p>
                         </div>
                         <div id="section1">
-                            <h2>Real Meals</h2>
+                            <h2>${restaurant.name}</h2>
                             <ul class="list-group">
+                            	<c:forEach items="${restaurant.foods}" var="food">
                                 <li class="list-group-item">
-                                    <a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="1">
-                                        <span id="food1">3 Pieces Combo</span>
+                                    <a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="${food.id}">
+                                        <span id="food${food.id}">${food.name}</span>
                                         <span class="label label-primary">
                                             <span>$</span>
-                                        <span id="price1">7.89</span>
+                                        <span id="price${food.id}">${food.price}</span>
                                         </span>
                                     </a>
                                 </li>
+                                </c:forEach>
                                 <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="2"><span id = "food2" >4 Pieces Combo</span><span class="label label-primary"><span>$</span><span id="price2">9.89</span></span></a></li>
                                 <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="3"><span id = "food3" >5 Wings Combo</span><span class="label label-primary"><span>$</span><span id="price3">6.00</span></span></a></li>
                                 <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="4"><span id = "food4" >Cajun Fish Combo</span><span class="label label-primary"><span>$</span><span id="price4">9.89</span></span></a></li>
@@ -252,16 +254,16 @@
             </div>
             <div class="footerSocialIcons">
                 <a class="footerSocialIconsIcon" href="https://twitter.com/" target="_blank">
-                    <img class="icon" src="img/twitter.svg" alt="twitter">
+                    <img class="icon" src="<c:url value='/resources/img/twitter.svg'/>" alt="twitter">
                 </a>
                 <a class="footerSocialIconsIcon" href="https://facebook.com/" target="_blank">
-                    <img class="icon" src="img/facebook.svg" alt="facebook">
+                    <img class="icon" src="<c:url value='/resources/img/facebook.svg'/>" alt="facebook">
                 </a>
                 <a class="footerSocialIconsIcon" href="https://instagram.com/" target="_blank">
-                    <img class="icon" src="img/instagram.svg" alt="instagram">
+                    <img class="icon" src="<c:url value='/resources/img/instagram.svg'/>" alt="instagram">
                 </a>
                 <a class="footerSocialIconsIcon" href="https://google.com/" target="_blank">
-                    <img class="icon" src="img/google.svg" alt="google">
+                    <img class="icon" src="<c:url value='/resources/img/google.svg'/>" alt="google">
                 </a>
             </div>
             <div class="footerLegal">

@@ -11,7 +11,6 @@ import org.hibernate.criterion.Restrictions;
 
 import com.me.delivery.pojo.Restaurant;
 import com.me.delivery.exception.RestaurantException;
-import com.me.delivery.pojo.Address;
 
 @Repository
 public class RestaurantDAO extends DAO {
@@ -37,6 +36,20 @@ public class RestaurantDAO extends DAO {
 		}catch(HibernateException e){
 			rollback();
 			throw new RestaurantException("Could not find this zipcode: " + zipcode, e);
+		}
+	}
+	
+	public Restaurant getRestById(String key) throws RestaurantException{
+		try{
+			long id = Long.parseLong(key);
+			begin();
+			Criteria crit = getSession().createCriteria(Restaurant.class);
+			Restaurant r = (Restaurant)crit.add(Restrictions.idEq(id)).uniqueResult();
+			commit();
+			return r;
+		}catch(HibernateException e){
+			rollback();
+			throw new RestaurantException("Could not find restaurant with this id: " + key,e);
 		}
 	}
 }
