@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 import org.hibernate.criterion.Restrictions;
 
 import com.me.delivery.pojo.Food;
+import com.me.delivery.pojo.Fooditem;
+import com.me.delivery.pojo.Order;
 import com.me.delivery.pojo.Restaurant;
 import com.me.delivery.exception.OrderException;
 import com.me.delivery.exception.RestaurantException;
@@ -20,6 +22,13 @@ public class OrderDAO extends DAO {
 
 	public OrderDAO() {
 	}
+	
+//	public void addOneFoodToOrder(Fooditem fooditem){
+//		try{
+//			begin();
+//			
+//		}
+//	}
 	
 	
 	public List<Food> collectOrderFood(String quantity, String foodname, String restaurantid) throws OrderException{
@@ -42,19 +51,19 @@ public class OrderDAO extends DAO {
 		}
 	}
 	
-	public Restaurant setFullOrder(String address,String billingzip,String cardNum,String ccv,String city,
+	public Order setFullOrder(String address,String billingzip,String cardNum,String ccv,String city,
 			String expMonth,String expYear,String firstname,String lastname,String phone,String state,String tip,
-			String totalprice,String zipcode) throws RestaurantException{
+			String totalprice,String zipcode) throws OrderException{
+		Order o = null;
 		try{
-			long id = Long.parseLong(key);
+//			long id = Long.parseLong(key);
 			begin();
 			Criteria crit = getSession().createCriteria(Restaurant.class);
-			Restaurant r = (Restaurant)crit.add(Restrictions.idEq(id)).uniqueResult();
 			commit();
-			return r;
+			return o;
 		}catch(HibernateException e){
 			rollback();
-			throw new OrderException("Could not find restaurant with this id: " + key,e);
+			throw new OrderException("Could not find restaurant with this id: " + o,e);
 		}
 	}
 }

@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Column;
 import org.hibernate.annotations.*;
 
@@ -60,7 +61,7 @@ public class Order{
 	@Column(name="billingzip")
     private String billingzip;
     
-	@ManyToMany(mappedBy="orders")
+	@OneToMany(mappedBy="orders")
     private List<Food> foods = new ArrayList<Food>();
     
 	@Column(name="tip")

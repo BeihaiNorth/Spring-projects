@@ -199,9 +199,10 @@
                         	    </tbody>
                         	</table>
                         	<p>Total Price: $<span id="totalprice">0</span></p>
-                            <input type="hidden" name="restaurantid" value="${restaurant.restautantId}" />
-                            
-                        	<button class="btn btn-default">Go To Checkout</button>
+                            <input type="hidden" name="restaurantid" value="${restaurant.restaurantId}" />
+                            <input type="hidden" name="foodcount" id="foodcount" value="0" />
+                            <input type="hidden" name="totalprice" id="totalpriceinput" value="0" />
+                        	<button class="btn btn-default" type="submit">Go To Checkout</button>
                         </form>
                         <hr>
                         <!-- Set height and width with CSS -->

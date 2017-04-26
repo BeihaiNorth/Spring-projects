@@ -1,5 +1,6 @@
 package com.me.delivery.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import com.me.delivery.dao.RestaurantDAO;
 import com.me.delivery.exception.OrderException;
 import com.me.delivery.exception.RestaurantException;
 import com.me.delivery.pojo.Food;
+import com.me.delivery.pojo.Fooditem;
 import com.me.delivery.pojo.Order;
 import com.me.delivery.validator.OrderValidator;
 import com.me.delivery.validator.RestaurantValidator;
@@ -37,15 +39,20 @@ public class OrderController {
 
 	@RequestMapping(value="/checkout", method=RequestMethod.GET)
 	public ModelAndView goToCheckout(HttpServletRequest request){
-		String quantity = request.getParameter("quantity1");
-		String foodname = request.getParameter("food1");
+		
 		String restaurantid =request.getParameter("restaurantid");
-		try {
-			List<Food> foodlist = orderDao.collectOrderFood(quantity,foodname,restaurantid);
-			return new ModelAndView("order","foodlist",foodlist);
-		} catch(OrderException e){
-			return new ModelAndView("error", "errorMessage", "error while search food");
+		int foodcount=Integer.parseInt(request.getParameter("foodcount"));
+		String totalprice = request.getParameter("totalprice");
+		List<Fooditem> fooditemlist = new ArrayList<Fooditem>();
+		for(int i = 0; i<foodcount; i++){
+			Fooditem fooditem = new Fooditem();
+			String name=request.getParameter("food"+i);
+			String quantity = request.getParameter("quantity"+i);
+			fooditem.setName(name);
+			fooditem.setCount(quantity);
+			fooditemlist.add(fooditem);
 		}
+		return new ModelAndView("order","fooditemlist",fooditemlist);
 	}
 	
 	@RequestMapping(value="/orderconfirm", method=RequestMethod.POST)
@@ -92,11 +99,11 @@ public class OrderController {
 			String zipcode = request.getParameter("zipcode");
 			Order order = (Order)orderDao.setFullOrder(address,billingzip,cardNum,ccv,city,expMonth,expYear,firstname,lastname,phone,state,tip,totalprice,zipcode);
 			
-			order.setStatus(true);
+//			order.setStatus(true);
 
-			return new ModelAndView("orderSuccess");
+			return new ModelAndView("orderSuccess","order",order);
 		} catch(OrderException e){
-			return new ModelAndView("error", "errorMessage", "error while search food");
+			return new ModelAndView("error", "errorMessage", "error place order");
 		}
 	}
 	

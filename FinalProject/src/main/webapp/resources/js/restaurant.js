@@ -24,7 +24,6 @@ app.controller("myCtrl", function($scope) {
     // $scope.price = p;
     $scope.quantity = 1;
     $scope.total = 0;
-    // $scope.food1.price=popyeys.food1.price;
 
 
     var popyeys = {
@@ -64,7 +63,7 @@ function showModal(a) {
     var q = $('input[name=quantity]').html();
     // console.log(price);
     // console.log(q);
-    $('input:text').val(1);
+    // $('input:text').val(1);
 
 }
 
@@ -86,24 +85,30 @@ $(document).on('click', '.number-spinner button', function () {
     btn.closest('.number-spinner').find('input').val(newVal);
 });
 
+var count =0;
 function addtobag(){
     var p = parseFloat($('.modal-body #p').html());
-        q = $('input:text').val().trim();
-        subtotal = p*q;
+        q1 = $('input:text').val().trim();
+        subtotal = p*q1;
         // subtotal = (subtotal).toFixed(2);
-        foodname = $('#myModalLabel').text();
+        fn = $('#myModalLabel').text();
         carttotal = parseFloat($('#totalprice').html());
 
     console.log(p);
-    console.log(q);
+    console.log(q1);
     console.log(subtotal);
 
     // fixed to 2 digit
     var subtotalfix2 = (subtotal).toFixed(2);
-    $('.panel-body table').append("<tr><td><input type='text' name='quantity"+1+"value='"+ q +"' disabled />"
-    		+"</td><td><input type='text' name='food"+1+"' value='"+ foodname +"' disabled /></td><td>$"+ subtotalfix2 +'</td></tr>');
+    $('.panel-body table').append("<tr><td><input type='text' size='2' name='quantity"+count+"' value='"+ q1 +"' disabled />"
+    		+"</td><td><input type='text' size='20' name='food"+count+"' value='"+ fn +"' disabled /></td><td>$"+ subtotalfix2 +'</td></tr>');
     carttotal += subtotal;
     carttotalfix2 = (carttotal).toFixed(2);
     $('#totalprice').html(carttotalfix2);
+    count++;
+    console.log('count'+count);
+    $('#foodcount').attr('value',count);
+    $('#totalpriceinput').attr('value',carttotalfix2);
+
 }
 

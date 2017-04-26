@@ -39,13 +39,13 @@ public class Food{
 	@Column(name="description")
 	private String description;
 	
-	@ManyToMany
-    @JoinTable (
-       name="order_food_table",
-       joinColumns = {@JoinColumn(name="foodID", nullable = false, updatable = false)},
-       inverseJoinColumns = {@JoinColumn(name="orderID")} //joinColumns指定当前对象的外键；inverseJoinColumns指定关联对象的外键
-    )
-	private Set<Order> orders = new HashSet<Order>();
+//	@ManyToMany
+//    @JoinTable (
+//       name="order_food_table",
+//       joinColumns = {@JoinColumn(name="foodID", nullable = false, updatable = false)},
+//       inverseJoinColumns = {@JoinColumn(name="orderID")} //joinColumns指定当前对象的外键；inverseJoinColumns指定关联对象的外键
+//    )
+//	private Set<Order> orders = new HashSet<Order>();
 	
 	public String getDescription() {
         return description;
