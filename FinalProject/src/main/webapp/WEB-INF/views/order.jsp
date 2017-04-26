@@ -40,6 +40,13 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#about">ABOUT</a></li>
+                    <c:if test="${not empty sessionScope.user}">
+   						<li><a href="#">Hello, ${sessionScope.user.username}</a></li>
+   	    			</c:if>
+   	    			<c:if test="${empty sessionScope.user}">
+   	    				<li><a class="cd-signin" href="#0">Sign in</a></li>
+        				<li><a class="cd-signup" href="#0">Sign up</a></li>
+   	    			</c:if>
                 </ul>
             </div>
         </div>

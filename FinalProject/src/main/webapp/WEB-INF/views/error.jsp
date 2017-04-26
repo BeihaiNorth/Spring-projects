@@ -11,7 +11,9 @@
 
 <h1>Error Page</h1>
 <p>${errorMessage}</p>
-
+<c:forEach items="${sessionScope}" var="attr">
+    	${attr.key}=${attr.value}
+	  </c:forEach>
 
 
 </body>

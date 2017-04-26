@@ -100,7 +100,8 @@ function addtobag(){
 
     // fixed to 2 digit
     var subtotalfix2 = (subtotal).toFixed(2);
-    $('.panel-body table').append('<tr><td>'+ q +'</td><td>'+ foodname +'</td><td>$'+ subtotalfix2 +'</td></tr>');
+    $('.panel-body table').append("<tr><td><input type='text' name='quantity"+1+"value='"+ q +"' disabled />"
+    		+"</td><td><input type='text' name='food"+1+"' value='"+ foodname +"' disabled /></td><td>$"+ subtotalfix2 +'</td></tr>');
     carttotal += subtotal;
     carttotalfix2 = (carttotal).toFixed(2);
     $('#totalprice').html(carttotalfix2);

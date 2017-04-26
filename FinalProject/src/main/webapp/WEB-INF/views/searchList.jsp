@@ -41,12 +41,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">FOOD</a>
+                <a class="navbar-brand" href="http://localhost:8080/final/delivery/">FOOD</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#about">ABOUT</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <c:if test="${not empty sessionScope.user}">
+   						<li><a href="#">Hello, ${sessionScope.user.username}</a></li>
+   	    			</c:if>
+   	    			<c:if test="${empty sessionScope.user}">
+   	    				<li><a class="cd-signin" href="#0">Sign in</a></li>
+        				<li><a class="cd-signup" href="#0">Sign up</a></li>
+   	    			</c:if>
                 </ul>
             </div>
         </div>

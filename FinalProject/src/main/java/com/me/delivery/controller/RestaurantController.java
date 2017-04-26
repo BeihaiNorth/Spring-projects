@@ -21,7 +21,6 @@ import com.me.delivery.pojo.Restaurant;
 import com.me.delivery.validator.RestaurantValidator;
 
 @Controller
-//@RequestMapping("/user/*")
 public class RestaurantController {
 	@Autowired
 	@Qualifier("restaurantDao")
@@ -31,11 +30,6 @@ public class RestaurantController {
 	@Qualifier("restaurantValidator")
 	RestaurantValidator validator;
 
-	@InitBinder
-	private void initBinder(WebDataBinder binder) {
-		binder.setValidator(validator);
-	}
-	
 	@RequestMapping(value="/search", method=RequestMethod.GET)
 	public ModelAndView searchRests(HttpServletRequest request){
 		System.out.println("Searching restaurants...");

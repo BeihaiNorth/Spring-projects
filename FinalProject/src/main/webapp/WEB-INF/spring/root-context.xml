@@ -5,10 +5,13 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-	<bean id="userDao" class="com.me.delivery.dao.UserDAO" ></bean>
-	<bean id="userValidator" class="com.me.delivery.validator.UserValidator"></bean>
+	<bean id="customerDao" class="com.me.delivery.dao.CustomerDAO" ></bean>
+	<bean id="customerValidator" class="com.me.delivery.validator.CustomerValidator"></bean>
 	
 	<bean id="restaurantDao" class="com.me.delivery.dao.RestaurantDAO" ></bean>
 	<bean id="restaurantValidator" class="com.me.delivery.validator.RestaurantValidator"></bean>
+	
+	<bean id="orderDao" class="com.me.delivery.dao.OrderDAO" ></bean>
+	<bean id="orderValidator" class="com.me.delivery.validator.OrderValidator"></bean>
 		
 </beans>

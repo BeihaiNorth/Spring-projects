@@ -21,7 +21,7 @@
     <!-- Add Google Maps -->
     <script src="http://maps.googleapis.com/maps/api/js"></script>
     <script>
-    var myCenter = new google.maps.LatLng(42.339222, -71.087520);
+    var myCenter = new google.maps.LatLng(${restaurant.lattitude}, ${restaurant.longtitude});
 
     function initialize() {
 
@@ -77,11 +77,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">FOOD</a>
+                <a class="navbar-brand" href="http://localhost:8080/final/delivery/">FOOD</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="restaurantList.html">LIST</a></li>
+                    <!-- <li><a href="restaurantList.html">LIST</a></li> -->
+                    <c:if test="${not empty sessionScope.user}">
+   						<li><a href="#">Hello, ${sessionScope.user.username}</a></li>
+   	    			</c:if>
+   	    			<c:if test="${empty sessionScope.user}">
+   	    				<li><a class="cd-signin" href="#0">Sign in</a></li>
+        				<li><a class="cd-signup" href="#0">Sign up</a></li>
+   	    			</c:if>
                 </ul>
             </div>
         </div>
@@ -94,8 +101,8 @@
                     <img src="<c:url value='/resources/img/logo.jpg'/>" width="130">
                 </div>
                 <div class="col-xs-11 col-sm-8">
-                    <h1>POPEYES</h1>
-                    <p><b>360 Huntington Street, Boston, MA 02115 | Chicken, Tender, Fastfood</b></p>
+                    <h1>${restaurant.name}</h1>
+                    <p><b>${restaurant.street}, ${restaurant.zipcode} | ${restaurant.type}</b></p>
                     <p><b>Min $20.00</b></p>
                     <p><b>Estimated time 35-40 min</b></p>
                 </div>
@@ -124,11 +131,11 @@
                 <div class="panel panel-default">
                     <div class="panel-body" id="foodlist">
                         <div id="section0">
-                            <h2>POPEYES</h2>
-                            <p>Open time: 10 am - 23 pm</p>
+                            <h2>${restaurant.name}</h2>
+                            <p><STRONG>Open time:</STRONG> ${restaurant.hours }</p>
                         </div>
                         <div id="section1">
-                            <h2>${restaurant.name}</h2>
+                            <h2>Menu</h2>
                             <ul class="list-group">
                             	<c:forEach items="${restaurant.foods}" var="food">
                                 <li class="list-group-item">
@@ -139,54 +146,12 @@
                                         <span id="price${food.id}">${food.price}</span>
                                         </span>
                                     </a>
+                                    <p style="color:grey;">${food.description}</p>
                                 </li>
                                 </c:forEach>
-                                <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="2"><span id = "food2" >4 Pieces Combo</span><span class="label label-primary"><span>$</span><span id="price2">9.89</span></span></a></li>
-                                <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="3"><span id = "food3" >5 Wings Combo</span><span class="label label-primary"><span>$</span><span id="price3">6.00</span></span></a></li>
-                                <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="4"><span id = "food4" >Cajun Fish Combo</span><span class="label label-primary"><span>$</span><span id="price4">9.89</span></span></a></li>
                             </ul>
                         </div>
-                        <div id="section2">
-                            <h2>Louisiana Travelers</h2>
-                            <ul class="list-group">
-                                <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="5"><span id = "food5" >3 Tenders</span><span class="label label-primary"><span>$</span><span id="price5">4.89</span></span></a></li>
-                                <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="6"><span id = "food6" >5 Tenders</span><span class="label label-primary"><span>$</span><span id="price6">6.89</span></span></a></li>
-                                <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="7"><span id = "food7" >6 Nuggets</span><span class="label label-primary"><span>$</span><span id="price7">7.59</span></span></a></li>
-                                <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="8"><span id = "food8" >9 Nuggets</span><span class="label label-primary"><span>$</span><span id="price8">10.89</span>9</span></a></li>
-                            </ul>
-                        </div>
-                        <div id="section3">
-                            <h2>Big Easy</h2>
-                            <ul class="list-group">
-                                <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="9"><span id = "food9" >Loaded Chicken Wrap</span><span class="label label-primary"><span>$</span><span id="price9">8.89</span></span></a></li>
-                                <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="10"><span id = "food10" >Chicken Tender Sandwich</span><span class="label label-primary"><span>$</span><span id="price10">6.89</span></span></a></li>
-                                <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="11"><span id = "food11" >Popcorn Shrimp Sandwich</span><span class="label label-primary"><span>$</span><span id="price11">6.58</span></span></a></li>
-                                <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="12"><span id = "food12" >Chicken Sausage Bowl</span><span class="label label-primary"><span>$</span><span id="price12">4.89</span></span></a></li>
-                            </ul>
-                        </div>
-                        <div id="section4">
-                            <h2>Local Favorites</h2>
-                            <ul class="list-group">
-                                <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="13"><span id = "food13" >Loaded Chicken Wrap</span><span class="label label-primary"><span>$</span><span id="price13">5.89</span></span></a></li>
-                                <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="14"><span id = "food14" >Chicken Tender Sandwich</span><span class="label label-primary"><span>$</span><span id="price14">6.89</span></span></a></li>
-                                <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="15"><span id = "food15" >Popcorn Shrimp Sandwich</span><span class="label label-primary"><span>$</span><span id="price15">4.89</span></span></a></li>
-                            </ul>
-                        </div>
-                        <div id="section5">
-                            <h2>Desserts</h2>
-                            <ul class="list-group">
-                                <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="16"><span id = "food16" >Hot Cinnamon Apple Pie</span><span class="label label-primary"><span>$</span><span id="price16">3.89</span></span></a></li>
-                                <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="17"><span id = "food17" >Mardi Gras Cheesecake</span><span class="label label-primary"><span>$</span><span id="price17">2.89</span></span></a></li>
-                                <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="18"><span id = "food18" >Pecan Pie</span><span class="label label-primary"><span>$</span><span id="price18">2.89</span></span></a></li>
-                            </ul>
-                        </div>
-                        <div id="section6">
-                            <h2>Beverages</h2>
-                            <ul class="list-group">
-                                <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="19"><span id = "food19" >Bottled Water</span><span class="label label-primary"><span>$</span><span id="price19">2.19</span></span></a></li>
-                                <li class="list-group-item"><a href=# data-toggle="modal" data-target="#myModal" onclick="showModal(this)" id="20"><span id = "food20" >Fountain Soda</span><span class="label label-primary"><span>$</span><span id="price20">1.69</span></span></a></li>
-                            </ul>
-                        </div>
+                        
                         <!-- add item Modal -->
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                             <div class="modal-dialog  modal-sm" role="document">
@@ -224,16 +189,20 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <h2>Your Bag</h2>
-                        <select class="form-control" name="Type">
-                            <option value="Delivery">Delivery</option>
-                            <option value="Takeout">Takeout</option>
-                        </select>
-                        <table class="table">
-                            <tbody>
-                            </tbody>
-                        </table>
-                        <p>Total Price: $<span id="totalprice">0</span></p>
-                        <button class="btn btn-default"><a href="order.html">Go To Checkout</a></button>
+                        <form action="checkout" method="get">
+                        	<select class="form-control" name="Type">
+                        	    <option value="Delivery">Delivery</option>
+                        	    <option value="Takeout">Takeout</option>
+                        	</select>
+                        	<table class="table">
+                        	    <tbody>
+                        	    </tbody>
+                        	</table>
+                        	<p>Total Price: $<span id="totalprice">0</span></p>
+                            <input type="hidden" name="restaurantid" value="${restaurant.restautantId}" />
+                            
+                        	<button class="btn btn-default">Go To Checkout</button>
+                        </form>
                         <hr>
                         <!-- Set height and width with CSS -->
                         <div id="googleMap" style="height:300px;width:100%;"></div>
@@ -268,6 +237,7 @@
             </div>
             <div class="footerLegal">
                 Copyright &copy; 2016 Designed and built by WYT, Tweety, Leslie and Hailie.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
             </div>
     </footer>
 </body>

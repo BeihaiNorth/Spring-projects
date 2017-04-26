@@ -13,6 +13,16 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	
+	<!-- Xss filter -->
+	<filter>
+        <filter-name>xssFilter</filter-name>
+        <filter-class>com.me.delivery.filter.XssFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>xssFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
 	<!-- Processes application requests -->
 	<servlet>

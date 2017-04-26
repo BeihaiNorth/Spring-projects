@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page session="false" %>
 
 <!DOCTYPE html>
@@ -41,12 +42,6 @@
     });
   });
 
-//search
-
-// function jump(){
-// 	window.location.href = "restaurantList.html";
-// }
-
 
 
   </script>
@@ -68,10 +63,9 @@
       <li><a href="#row1">FEEDBACK</a></li>
       <li><a href="#row2">CONTACT</a></li>
 
-
         <!-- inser more links here -->
-        <li><a class="cd-signin" href="#0">Sign in</a></li>
-        <li><a class="cd-signup" href="#0">Sign up</a></li>
+   	    	<li><a class="cd-signin" href="#0">Sign in</a></li>
+        	<li><a class="cd-signup" href="#0">Sign up</a></li>
       </ul>
     </nav>
   </header>
@@ -79,22 +73,21 @@
   <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
     <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
       <ul class="cd-switcher">
-
-        <li><a href="#0">Sign in</a></li>
-        <li><a href="#0">New account</a></li>
+   	    	<li><a href="#0">Sign in</a></li>
+        	<li><a href="#0">New account</a></li>
       </ul>
 
       <div id="cd-login"> <!-- log in form -->
-        <form class="cd-form" action="user/signin" method="post">
+        <form class="cd-form" action="signin" method="post">
           <p class="fieldset">
             <label class="image-replace cd-email" for="signin-email">E-mail</label>
-            <input class="full-width has-padding has-border" name="signin-email" id="signin-email" type="email" placeholder="E-mail">
+            <input class="full-width has-padding has-border" name="signin-username" id="signin-username" type="text" placeholder="Username" required>
             <span class="cd-error-message">Error message here!</span>
           </p>
 
           <p class="fieldset">
             <label class="image-replace cd-password" for="signin-password">Password</label>
-            <input class="full-width has-padding has-border" name="signin-password" id="signin-password" type="text"  placeholder="Password">
+            <input class="full-width has-padding has-border" name="signin-password" id="signin-password" type="password"  placeholder="Password" required>
             <a href="#0" class="hide-password">Hide</a>
             <span class="cd-error-message">Error message here!</span>
           </p>
@@ -113,31 +106,30 @@
         <!-- <a href="#0" class="cd-close-form">Close</a> -->
       </div> <!-- cd-login -->
 
-      <div id="cd-signup"> <!-- sign up form -->
-        <form class="cd-form" action="user/signup" method="post">
+	  <!-- sign up form -->
+      <div id="cd-signup">
+        <form class="cd-form" action="signup" method="post">
           <p class="fieldset">
             <label class="image-replace cd-username" for="signup-username">Username</label>
-            <input class="full-width has-padding has-border" id="signup-username" name="signup-username" type="text" placeholder="Username">
-            <span class="cd-error-message">Error message here!</span>
+            <input class="full-width has-padding has-border" id="signup-username" name="signup-username" type="text" placeholder="Username" required="required" />
+            <span id="registerError"></span>
           </p>
 
           <p class="fieldset">
             <label class="image-replace cd-email" for="signup-email">E-mail</label>
-            <input class="full-width has-padding has-border" id="signup-email" name="signup-email" type="email" placeholder="E-mail">
-            <span class="cd-error-message">Error message here!</span>
+            <input class="full-width has-padding has-border" id="signup-email" name="signup-email" type="email" placeholder="E-mail" required="required" />
           </p>
 
           <p class="fieldset">
             <label class="image-replace cd-password" for="signup-password">Password</label>
-            <input class="full-width has-padding has-border" id="signup-password" name="signup-password" type="text"  placeholder="Password">
+            <input class="full-width has-padding has-border" id="signup-password" name="signup-password" type="password"  placeholder="Password" required="required" />
             <a href="#0" class="hide-password">Hide</a>
-            <span class="cd-error-message">Error message here!</span>
           </p>
 
-          <p class="fieldset">
+<!--           <p class="fieldset">
             <input type="checkbox" id="accept-terms">
             <label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
-          </p>
+          </p> -->
 
           <p class="fieldset">
             <input class="full-width has-padding" type="submit" value="Create account">
@@ -153,7 +145,7 @@
         <form class="cd-form">
           <p class="fieldset">
             <label class="image-replace cd-email" for="reset-email">E-mail</label>
-            <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
+            <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail" >
             <span class="cd-error-message">Error message here!</span>
           </p>
 
