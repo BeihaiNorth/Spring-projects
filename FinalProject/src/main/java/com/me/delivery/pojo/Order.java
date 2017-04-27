@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Column;
@@ -61,17 +62,12 @@ public class Order{
 	@Column(name="billingzip")
     private String billingzip;
     
-	@OneToMany(mappedBy="orders")
-    private List<Food> foods = new ArrayList<Food>();
-    
-	@Column(name="tip")
-    private Float tip;
-    
-	@Column(name="foodPrice")
-    private Float foodPrice;
+	@OneToMany
+	@JoinColumn(name="order_id")  
+    private List<Fooditem> foods = new ArrayList<Fooditem>();
     
 	@Column(name="totalPrice")
-    private Float totalPrice;
+    private String totalPrice;
 
     public Long getId() {
         return id;
@@ -177,35 +173,20 @@ public class Order{
         this.billingzip = billingzip;
     }
 
-    public List<Food> getFoods() {
+    public List<Fooditem> getFoods() {
         return foods;
     }
 
-    public void setFoods(List<Food> foods) {
+    public void setFoods(List<Fooditem> foods) {
         this.foods = foods;
     }
 
-    public Float getTip() {
-        return tip;
-    }
 
-    public void setTip(Float tip) {
-        this.tip = tip;
-    }
-
-    public Float getFoodPrice() {
-        return foodPrice;
-    }
-
-    public void setFoodPrice(Float foodPrice) {
-        this.foodPrice = foodPrice;
-    }
-
-    public Float getTotalPrice() {
+    public String getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(Float totalPrice) {
+    public void setTotalPrice(String totalPrice) {
         this.totalPrice = totalPrice;
     }
 }

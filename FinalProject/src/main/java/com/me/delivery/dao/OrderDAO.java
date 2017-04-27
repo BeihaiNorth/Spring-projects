@@ -52,18 +52,33 @@ public class OrderDAO extends DAO {
 	}
 	
 	public Order setFullOrder(String address,String billingzip,String cardNum,String ccv,String city,
-			String expMonth,String expYear,String firstname,String lastname,String phone,String state,String tip,
-			String totalprice,String zipcode) throws OrderException{
-		Order o = null;
+			String expMonth,String expYear,String firstname,String lastname,String phone,String state,
+			String totalprice,String zipcode, List<Fooditem> fooditemlist) throws OrderException{
+		Order o = new Order();
 		try{
-//			long id = Long.parseLong(key);
+			o.setAddress(address);
+			o.setBillingzip(billingzip);
+			o.setCardNum(cardNum);
+			o.setCcv(ccv);
+			o.setCity(city);
+			o.setExpMonth(expMonth);
+			o.setExpYear(expYear);
+			o.setFirstname(firstname);
+			o.setLastname(lastname);
+			o.setPhone(phone);
+			o.setState(state);
+			o.setTotalPrice(totalprice);
+			o.setZipcode(zipcode);
+			o.setFoods(fooditemlist);
+			
 			begin();
-			Criteria crit = getSession().createCriteria(Restaurant.class);
+			getSession().save(o);
 			commit();
 			return o;
+			
 		}catch(HibernateException e){
 			rollback();
-			throw new OrderException("Could not find restaurant with this id: " + o,e);
+			throw new OrderException("Could not add this order" + o,e);
 		}
 	}
 }

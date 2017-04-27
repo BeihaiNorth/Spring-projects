@@ -22,7 +22,11 @@ import com.me.delivery.pojo.Order;
 @Table(name="fooditem_table")
 public class Fooditem{
 	
+	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id", unique=true, nullable = false)
+	private Long id;
+	
 	@Column(name="name")
 	private String name;
 	

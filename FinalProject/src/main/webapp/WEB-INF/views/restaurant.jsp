@@ -189,7 +189,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <h2>Your Bag</h2>
-                        <form action="checkout" method="get">
+                        <form action="checkout" method="post">
                         	<select class="form-control" name="Type">
                         	    <option value="Delivery">Delivery</option>
                         	    <option value="Takeout">Takeout</option>

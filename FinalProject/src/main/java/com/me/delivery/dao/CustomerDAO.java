@@ -2,12 +2,16 @@ package com.me.delivery.dao;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.Criteria;
 import org.springframework.stereotype.Repository;
 
 import com.me.delivery.exception.CustomerException;
+import com.me.delivery.exception.RestaurantException;
 import com.me.delivery.pojo.Customer;
 import com.me.delivery.pojo.Email;
+import com.me.delivery.pojo.Order;
+import com.me.delivery.pojo.Restaurant;
 import com.me.delivery.pojo.User;
 
 @Repository
@@ -79,6 +83,22 @@ public class CustomerDAO extends DAO {
 		} catch (HibernateException e) {
 			rollback();
 			throw new CustomerException("Could not delete user " + user.getUsername(), e);
+		}
+	}
+	
+	public Customer saveaorder(Order o, String customerid)
+		throws CustomerException{
+		try{
+			begin();
+			Criteria crit = getSession().createCriteria(Customer.class);
+			Customer c = (Customer)crit.add(Restrictions.idEq(customerid)).uniqueResult();
+			c.getOrders().add(o);
+			getSession().update(c);
+			commit();
+			return c;
+		}catch(HibernateException e){
+			rollback();
+			throw new CustomerException("Could save order to this customer"+customerid,e);
 		}
 	}
 }

@@ -18,6 +18,7 @@ import com.me.delivery.dao.CustomerDAO;
 import com.me.delivery.exception.CustomerException;
 import com.me.delivery.pojo.Customer;
 import com.me.delivery.pojo.Email;
+import com.me.delivery.pojo.Order;
 import com.me.delivery.pojo.User;
 import com.me.delivery.validator.CustomerValidator;
 
@@ -87,5 +88,16 @@ public class CustomerController {
 			return new ModelAndView("error", "errorMessage", "error while login");
 		}
 	}
+	
+//	public static Customer saveOrder(Order o, String customerid){
+//		try{
+//			Customer c = customerDao.saveaorder(o, customerid);
+//			return c;
+//		}catch(CustomerException e){
+//			System.out.println("Exception: " + e.getMessage());
+//			return null;
+//			
+//		}
+//	}
 
 }

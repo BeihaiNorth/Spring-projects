@@ -19,9 +19,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="JS/order.js"></script>
+    <script src="<c:url value='/resources/js/order.js'/>"></script>
     <!-- css style -->
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/main.css'/>" >
     <title>Food Delivery | Order checkout</title>
 </head>
 
@@ -63,28 +63,19 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Your bag</div>
                     <div class="panel-body">
-                        <h5 id="storename" style="margin-bottom: 20px;">Popeyes NEU</h5>
+                        <!-- <h5 id="storename" style="margin-bottom: 20px;">Popeyes NEU</h5> -->
                         <table class="table">
                             <tbody>
-                                <tr>
-                                    <td style="color: #881a23;font-weight: bold;">3</td>
-                                    <td style="color: #881a23;">3 Piece Combo</td>
-                                    <td>$23.67</td>
-                                </tr>
-                                <tr>
-                                    <td style="color: #881a23;font-weight: bold;">2</td>
-                                    <td style="color: #881a23;">4 Piece Combo</td>
-                                    <td>$19.78</td>
-                                </tr>
-                                <tr>
-                                    <td style="color: #881a23;font-weight: bold;">2</td>
-                                    <td style="color: #881a23;">Fountain Soda</td>
-                                    <td>$3.38</td>
-                                </tr>
+                            	<c:forEach items="${fooditemlist}" var="fooditem">
+                            		<tr>
+                                    	<td style="color: #881a23;font-weight: bold;">${fooditem.count}</td>
+                                    	<td style="color: #881a23;">${fooditem.name}</td>
+                                	</tr>
+                            	</c:forEach>
                             </tbody>
                         </table>
-                        <p>Total Price: $46.83</p>
-                        <button class="btn btn-default btn-block" style="background-color: #fdc743;"><a style=" color:#c32632;" href="ordercheck.html">Go To Checkout</a></button>
+                        <p>Total Price: ${totalprice}</p>
+                        <!-- <button class="btn btn-default btn-block" type="submit" style="background-color: #fdc743;color:#c32632;">Go To Checkout</button> -->
                     </div>
                 </div>
             </div>
@@ -98,7 +89,7 @@
                             Please finish the required field.
                         </div>
                         <div class="tab-pane fade in active">
-                            <form id="deliver_info_form" ng-app="myApp" ng-controller="validateCtrl" name="myForm" novalidate>
+                            <form id="deliver_info_form" ng-app="myApp" ng-controller="validateCtrl" name="myForm" action="ordersuccess" method="post" novalidate>
                                 <div class="form-group col-xs-6 col-sm-6">
                                     <label class="control-label">First name</label>
                                     <div>
@@ -120,7 +111,7 @@
                                 <div class="form-group col-xs-12">
                                     <label class="control-label">Street address</label>
                                     <div>
-                                        <input type="text" class="form-control" name="street" ng-model="street" required />
+                                        <input type="text" class="form-control" name="address" ng-model="street" required />
                                     </div>
                                     <span style="color:red" ng-show="myForm.$submitted || myForm.street.$touched">
                                     <span ng-show="myForm.street.$error.required">Address is required.</span>
@@ -222,12 +213,7 @@
                                     </span>
                                 </div>
                                 <br>
-                                <div class="form-group">
-                                    <!-- 为什么添加了checkbox类所有的空就无法选中了？？？ -->
-                                    <label>
-                                        <input type="checkbox"> Save for future purchase</label>
-                                </div>
-                            </form>
+                            <%-- </form>
                         </div>
                     </div>
                 </div>
@@ -243,10 +229,11 @@
                     <div class="panel-body">
                         <div class="tab-content">
                             <div id="card" class="tab-pane fade in active">
-                                <form id="paymentValidation" novalidate name="paymentForm" ng-app="app" id="app2" ng-controller="MainCtrl" required>
-                                    <div class="form-group col-xs-12">
+                                <form id="paymentValidation" action="ordersuccess" method="post" novalidate name="paymentForm" ng-app="app" id="app2" ng-controller="MainCtrl" required>
+                                     --%>
+                                     <div class="form-group col-xs-12">
                                         <label for="ex1">Credit card number</label>
-                                        <input class="form-control" id="ex1" type="text" name="creditCard" ng-model="ccinfo.number" required data-credit-card-type data-ng-pattern="/^[0-9]+$/" data-ng-minlength="15" maxlength="19"> Card Type: {{ccinfo.type}}
+                                        <input class="form-control" id="ex1" type="text" name="cardNum" ng-model="ccinfo.number" required data-credit-card-type data-ng-pattern="/^[0-9]+$/" data-ng-minlength="15" maxlength="19"> Card Type: {{ccinfo.type}}
                                         <br/>
                                         <span style="color:red" class="payment-card" ng-show="paymentForm.creditCard.$touched">
                                                   <span ng-show="paymentForm.creditCard.$error.required">Credit card required<br></span>
@@ -257,7 +244,7 @@
                                     <div class="form-group col-xs-5">
                                         <label class="control-label">Exp. month</label>
                                         <div class="selectContainer">
-                                            <select class="form-control" name="size">
+                                            <select class="form-control" name="expMonth">
                                                 <option value="1">Jan</option>
                                                 <option value="2">Feb</option>
                                                 <option value="3">March</option>
@@ -276,7 +263,7 @@
                                     <div class="form-group col-xs-7">
                                         <label class="control-label">Exp. year</label>
                                         <div class="cselectContainer">
-                                            <select class="form-control" name="color">
+                                            <select class="form-control" name="expYear">
                                                 <option value="2016">2016</option>
                                                 <option value="2017">2017</option>
                                                 <option value="2018">2018</option>
@@ -293,7 +280,7 @@
                                     </div>
                                     <div class="form-group col-xs-5">
                                         <label for="ex2">CCV</label>
-                                        <input class="form-control" id="ex2" type="text" name="securityCode" ng-model="ccinfo.securityCode" required data-ng-pattern="/^[0-9]+$/" data-ng-minlength="3" maxlength="4">
+                                        <input class="form-control" id="ex2" type="text" name="ccv" ng-model="ccinfo.securityCode" required data-ng-pattern="/^[0-9]+$/" data-ng-minlength="3" maxlength="4">
                                         <span class="payment-card" style="color:red" ng-show="paymentForm.securityCode.$touched">
                                           <span ng-show="paymentForm.securityCode.$error.minlength||paymentForm.securityCode.$error.pattern">Security code must be 3-4 numbers</span>
                                         <span ng-show="paymentForm.securityCode.$error.required">Security code required</span>
@@ -301,7 +288,7 @@
                                     </div>
                                     <div class="form-group col-xs-7">
                                         <label for="ex3">Billing zip</label>
-                                        <input class="form-control" id="ex3" type="text" name="zipcode" ng-model="zipcode" ng-minlength="5" ng-maxlength="5" data-ng-pattern="/^[0-9]+$/" required/>
+                                        <input class="form-control" id="ex3" type="text" name="billingzip" ng-model="zipcode" ng-minlength="5" ng-maxlength="5" data-ng-pattern="/^[0-9]+$/" required/>
                                         <span style="color:red" ng-show="paymentForm.zipcode.$touched">
                                         <span ng-show="paymentForm.zipcode.$error.required">Please enter billing zip code.</span>
                                         <span class="help-block" style="color:red" ng-show="((paymentForm.zipcode.$error.minlength || myForm.zipcode.$error.maxlength ||myForm.zipcode.$error.pattern) &&  myForm.zipcode.$dirty) ">
@@ -309,10 +296,18 @@
                                         </span>
                                         </span>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label>
                                             <input type="checkbox"> Save for future purchase</label>
-                                    </div>
+                                    </div> -->
+                                    <input name="totalprice" type="hidden" value="${totalprice}">
+                                    <input name="restaurantid" type="hidden" value="${restaurantid}">
+                                    <input name="foodcount" type="hidden" value="${foodcount}">
+                                    <c:forEach items="${fooditemlist}" var="fooditem" varStatus="status">
+                                    	<input name="food${status.count}" type="hidden" value="${fooditem.name}">
+                                    	<input name="count${status.count}" type="hidden" value="${fooditem.count}">
+                                    </c:forEach>
+                                    <button class="btn btn-default btn-block" type="submit" style="background-color: #fdc743;color:#c32632;">Go To Checkout!!!</button>
                                 </form>
                             </div>
                             <div id="paypal" class="tab-pane fade">
@@ -325,9 +320,9 @@
                     </div>
                 </div>
                 <!-- Tip -->
-                <div class="panel panel-default">
+                <!-- <div class="panel panel-default">
                     <div class="panel-body">Tip Amount</div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

@@ -17,6 +17,7 @@
         <mapping class="com.me.delivery.pojo.Order" />
 		<mapping class="com.me.delivery.pojo.Email" />
 		<mapping class="com.me.delivery.pojo.Food" />
+		<mapping class="com.me.delivery.pojo.Fooditem" />
 		<mapping class="com.me.delivery.pojo.Restaurant" />
 		
     </session-factory>
